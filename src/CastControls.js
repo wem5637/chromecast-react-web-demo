@@ -34,7 +34,9 @@ export default class CastButton extends Component {
     this.remotePlayerController.addEventListener(
       cast.framework.RemotePlayerEventType.IS_CONNECTED_CHANGED,
       function (e) {
-        this.setState({isConnected:e.value}, () => {
+        var isConnected = e.value
+        this.setState({isConnected}, () => {
+          console.log("isConnected -", isConnected)
         })
       }.bind(this)
     );
@@ -42,26 +44,18 @@ export default class CastButton extends Component {
     this.remotePlayerController.addEventListener(
       cast.framework.RemotePlayerEventType.PLAYER_STATE_CHANGED,
       function (e) {
-        if(e.value){
-          if(e.value==="PLAYING"){
-            console.log("Chromecast is " + e.value)
-            this.setState({playerState:e.value})
-          }else if(e.value==="BUFFERING"){
-            console.log("Chromecast is " + e.value)
-            this.setState({playerState:e.value})
-          }else{
-            console.log("Chromecast is " + e.value)
-            this.setState({playerState:e.value})
-          }
+        if(e.value==="PLAYING"){
+          console.log("Chromecast is " + e.value)
+          this.setState({playerState:e.value})
+        }else if(e.value==="BUFFERING"){
+          console.log("Chromecast is " + e.value)
+          this.setState({playerState:e.value})
         }else{
-          this.setState({isMediaLoaded:e.value}, () => {
-          })
+          console.log("Chromecast is " + e.value)
+          this.setState({playerState:e.value})
         }
       }.bind(this)
     );
-
-    this.setState({playerState:this.remotePlayer.playerState})
-    this.castSrc()
   }
 
   castSrc = () => {
@@ -83,6 +77,8 @@ export default class CastButton extends Component {
       .catch((e) => {
         console.log(e)
       })
+    }else{
+      console.log("no session is available")
     }
   }
 
