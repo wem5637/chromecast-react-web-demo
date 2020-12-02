@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React, {Component} from 'react'
+import CastButton from './CastButton'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.src = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/CastVideos/mp4/ElephantsDream.mp4'
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <video
+          id="vid"
+          src={this.src}
+          autoPlay
+          controls={true}
+        />
+        <CastButton src={this.src}/>
+      </div>
+    );
+  }
 }
 
 export default App;
