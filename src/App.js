@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import CastButton from './CastButton'
+import CastControls from './CastControls'
 import './App.css';
 
 class App extends Component {
@@ -12,12 +12,13 @@ class App extends Component {
     return (
       <div className="App">
         <video
+          style={{position:"absolute", left:0, height:"360px", width:"640px"}}
           id="vid"
           src={this.src}
           autoPlay
           controls={true}
         />
-        <CastButton src={this.src}/>
+        <CastControls src={this.src}/>
       </div>
     );
   }

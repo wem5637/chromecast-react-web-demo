@@ -70,7 +70,7 @@ export default class CastButton extends Component {
 
     mediaInfo.streamType = chrome.cast.media.StreamType.LIVE;
     mediaInfo.metadata = new chrome.cast.media.TvShowMediaMetadata();
-    mediaInfo.metadata.title = "This is a Sample Title";
+    mediaInfo.metadata.title = "Sample Title";
 
     let request = new chrome.cast.media.LoadRequest(mediaInfo);
     request.autoplay = true;
@@ -95,7 +95,7 @@ export default class CastButton extends Component {
 
   render() {
     return (
-      <div style={{height:"40px", width:"200px", display:"flex", position:"absolute", top:0, margin:"15px"}}>
+      <div style={{height:"40px", width:"200px", display:"flex", position:"absolute", top:"360px", margin:"15px"}}>
         <google-cast-launcher id="castbutton">Connect to cast</google-cast-launcher>
         <button onClick={this.castSrc}>Load Media</button>
         <button onClick={this.stopSrc}>Stop</button>
